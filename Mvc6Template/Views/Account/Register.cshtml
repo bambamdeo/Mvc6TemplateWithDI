@@ -1,0 +1,134 @@
+﻿@model Model.UserDetails
+@{
+    ViewBag.Title = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="~/favicon.ico" sizes="16x16" /> <!--Print logo inside title-->
+    <title>Login</title>
+
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <style>
+        .shadow-1 {
+            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="hidden" id="hdnFormResponseMessage" value="@ViewBag.FormResponseMessage" />
+
+        <div class="row" style="margin-top:50px;" id="loginModel">
+            <div class="col-lg-6 offset-lg-3 shadow-1 p-5" style="border:1px solid rgba(112, 112, 112, 0.1);">
+                <h3 class="m-2">Login</h3>
+                <br>
+                <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" asp-antiforgery="true">
+
+
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="Email" class="form-control" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="FirstName" class="form-control" placeholder="FirstName" autocomplete="off" />
+                        <span asp-validation-for="FirstName" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="LastName" class="form-control" placeholder="LastName" autocomplete="off" />
+                        <span asp-validation-for="LastName" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="Phone" class="form-control" placeholder="Phone" autocomplete="off" />
+                        <span asp-validation-for="Phone" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="UserType" class="form-control" placeholder="UserType" autocomplete="off" />
+                        <span asp-validation-for="UserType" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="password" asp-for="Password" class="form-control m-input m-login__form-input--last" placeholder="Password" autocomplete="off" />
+                        <span asp-validation-for="Password" class="text-danger float-left"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right m-2">Sign In</button>
+                </form>
+                <div class="pt-5">
+                    <br>
+                    <a class="text-success" asp-controller="Account" asp-action="Login">Return to Login</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin-top:50px;display:none;" id="regModel">
+            <div class="col-lg-6 offset-lg-3 shadow-1 p-5" style="border:1px solid rgba(112, 112, 112, 0.1);">
+                <h3 class="m-2">Login</h3>
+                <br>
+                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" asp-antiforgery="true">
+
+
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="Email" class="form-control" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="password" asp-for="Password" class="form-control m-input m-login__form-input--last" placeholder="Password" autocomplete="off" />
+                        <span asp-validation-for="Password" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="FirstName" class="form-control" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="Email" class="form-control" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger float-left"></span>
+                    </div>
+                    <div class="input-full-width m-2">
+                        <input type="text" asp-for="Email" class="form-control" placeholder="Email" autocomplete="off" />
+                        <span asp-validation-for="Email" class="text-danger float-left"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right m-2">Register</button>
+                </form>
+                <div class="pt-5">
+                    <br>
+                    <a class="text-success" href="#">Back to Login</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            let formResponseMessage = $("#hdnFormResponseMessage").val();
+            if (formResponseMessage != "") {
+                alert(formResponseMessage);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

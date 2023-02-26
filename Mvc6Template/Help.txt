@@ -1,0 +1,4 @@
+﻿//Migration Commands for VisualStudio
+1. Create Databse named DemoDb
+2. Run the sql script in the file named Script.Sql 
+3. Run your application
